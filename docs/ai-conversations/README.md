@@ -28,6 +28,7 @@ YYYY-MM-DD-cursor-ghost-hetzner-implementation.md
 
 | File | Description |
 |------|-------------|
-| [2026-08-18-cursor-session-summary.md](2026-08-18-cursor-session-summary.md) | Summary of the session that created this repository |
+| [2026-08-18-cursor-session-summary.md](2026-08-18-cursor-session-summary.md) | Short summary of the implementation session |
+| [2026-08-18-cursor-ghost-hetzner-full-export.md](2026-08-18-cursor-ghost-hetzner-full-export.md) | Structured export of the Cursor conversation (task → plan → implementation) |
 
-Replace or supplement summaries with full exports before submission.
+Replace or supplement with a raw Cursor **Export chat** file before submission if required.
