@@ -112,7 +112,7 @@ No manual SSH to a public IP is required or possible after provisioning.
 
 ## AI Conversations
 
-Per assignment requirements, exports of AI-assisted development sessions are in [docs/ai-conversations/](docs/ai-conversations/).
+English copies of AI-assisted development sessions are in [docs/ai-conversations/](docs/ai-conversations/), as required for submission.
 
 ## Related Docs
 

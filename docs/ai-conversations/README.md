@@ -1,34 +1,24 @@
 # AI Conversation Exports
 
-This directory holds copies of AI-assisted development sessions, as required by the infrastructure task submission.
+This directory contains **English copies** of AI-assisted development sessions, as required by the infrastructure task submission.
 
 ## What to Include
 
-Export or copy conversations from tools used during implementation (e.g. Cursor, ChatGPT, Claude). Each file should cover:
+Each export should cover:
 
 - Initial task interpretation and plan
 - Key design decisions (Tailscale, cloud-init, firewall)
-- Implementation iterations and fixes
+- Implementation iterations and follow-ups
 
-## Suggested Naming
+All submission copies must be in **English** and must not reference private employer infrastructure or internal tooling names.
 
-```
-YYYY-MM-DD-cursor-ghost-hetzner-planning.md
-YYYY-MM-DD-cursor-ghost-hetzner-implementation.md
-```
-
-## How to Export from Cursor
-
-1. Open the chat used for this task
-2. Use **Export chat** (or copy the full conversation)
-3. Save as Markdown in this folder
-4. Commit to the repository
-
-## Included Summaries
+## Included Files
 
 | File | Description |
 |------|-------------|
 | [2026-08-18-cursor-session-summary.md](2026-08-18-cursor-session-summary.md) | Short summary of the implementation session |
-| [2026-08-18-cursor-ghost-hetzner-full-export.md](2026-08-18-cursor-ghost-hetzner-full-export.md) | Structured export of the Cursor conversation (task → plan → implementation) |
+| [2026-08-18-cursor-ghost-hetzner-full-export.md](2026-08-18-cursor-ghost-hetzner-full-export.md) | Full English conversation copy (task, plan, implementation, follow-up) |
 
-Replace or supplement with a raw Cursor **Export chat** file before submission if required.
+## Optional: Raw Cursor Export
+
+You may also add a raw **Export chat** file from Cursor for the same session. Keep it in English and redact secrets before committing.
