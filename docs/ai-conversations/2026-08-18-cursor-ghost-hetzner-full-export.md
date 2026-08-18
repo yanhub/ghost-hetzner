@@ -10,9 +10,7 @@ This file is an English copy of the AI-assisted design and implementation sessio
 
 ## User
 
-> 2 - infrastructure question task - Develop one click script to deploy ghost blog platform at a Hetzner VPS with no public SSH access, only through tunnels (any provider/app)
->
-> We expect a GitHub repository with these tasks completed, along with copies of the conversations with AI tools.
+> infrastructure question task - Develop one click script to deploy ghost blog platform at a Hetzner VPS with no public SSH access, only through tunnels (any provider/app)
 
 ---
 

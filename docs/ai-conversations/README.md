@@ -2,6 +2,8 @@
 
 This directory contains **English copies** of AI-assisted development sessions, as required by the infrastructure task submission.
 
+Task 1 (RBAC Fullstack Dev Test Task) exports live in the separate `test` repository under `docs/ai-conversations/`.
+
 ## What to Include
 
 Each export should cover:
