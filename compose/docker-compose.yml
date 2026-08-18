@@ -1,0 +1,79 @@
+# Ghost production stack: Ghost CMS, MySQL, Caddy (automatic HTTPS).
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?MYSQL_ROOT_PASSWORD is required}
+      MYSQL_DATABASE: ghost
+      MYSQL_USER: ghost
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?MYSQL_PASSWORD is required}
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ghost-mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - ghost
+
+  ghost:
+    image: ghost:5-alpine
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      url: ${GHOST_URL:?GHOST_URL is required}
+      database__client: mysql
+      database__connection__host: db
+      database__connection__port: 3306
+      database__connection__user: ghost
+      database__connection__password: ${MYSQL_PASSWORD}
+      database__connection__database: ghost
+      mail__transport: ${SMTP_HOST:+SMTP}
+      mail__options__host: ${SMTP_HOST:-}
+      mail__options__port: ${SMTP_PORT:-587}
+      mail__options__secure: "false"
+      mail__options__auth__user: ${SMTP_USER:-}
+      mail__options__auth__pass: ${SMTP_PASSWORD:-}
+      mail__from: ${SMTP_FROM:-Ghost Blog <noreply@example.com>}
+    volumes:
+      - ghost-content:/var/lib/ghost/content
+    networks:
+      - ghost
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - ghost
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      GHOST_DOMAIN: ${GHOST_DOMAIN:?GHOST_DOMAIN is required}
+      ACME_EMAIL: ${ACME_EMAIL:-}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    networks:
+      - ghost
+
+networks:
+  ghost:
+    driver: bridge
+
+volumes:
+  ghost-mysql-data:
+  ghost-content:
+  caddy-data:
+  caddy-config:

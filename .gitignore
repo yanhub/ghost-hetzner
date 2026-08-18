@@ -1,0 +1,7 @@
+.env
+*.log
+compose/data/
+.idea/
+.vscode/
+.agents/
+.claude/
